@@ -1,6 +1,6 @@
 # Rhetoric
-**A single page web application that 
-analyzes speech and visualizes the speaker’s ideas in real time.**
+##A single page web application that 
+analyzes speech and visualizes the speaker’s ideas in real time.
 
 Proposed final project for COMP86 - "Object Oriented 
 Programming for GUI" at Tufts University
