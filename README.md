@@ -9,6 +9,7 @@ Presented on Wednesday, November 30 2016.
 
 # View the Presentation and Proposal PDFs
 [View the presentation](/Presentation.pdf)
+
 [Read the proposal](/Proposal.pdf)
 
 # How it Works
