@@ -9,9 +9,9 @@ Presented on Wednesday, November 30 2016.
 Due December 11, 2016. 
 
 # View the Presentation and Proposal PDFs
-[View the presentation](/Presentation.pdf)
+![Presentation](/Presentation.pdf)
 
-[Read the proposal](/Proposal.pdf)
+![Proposal](/Proposal.pdf)
 
 # How it Works
 Upon loading the webpage, the app will begin reading in user audio input, and 
