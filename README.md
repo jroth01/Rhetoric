@@ -45,11 +45,15 @@ other ideas in a network graph using the VisJS javascript library
 # Possible Target Users 
 ● Economic analysts trying to quickly identify real time market trends and 
 sentiments about the future
+
 ● News analysts looking to distill ideas from speeches by leaders and public 
 figures
+
 ● Lawyers who seek insight into human motivations from speech
+
 ● Medical or psychiatric professionals trying to identify patterns and 
 relationshipsbetween described symptoms
+
 ● Public speakers who wish to add visual aid to their speeches in real time, or 
 make sure they are properly conveying the core ideas of an overarching message
 
