@@ -1,0 +1,199 @@
+<!doctype html>
+<html>
+<head>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+   <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+<script type="text/javascript" src="https://download.affectiva.com/js/3.1/affdex.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.17.0/vis.min.js"></script>
+
+<link rel="stylesheet" href="style.css">
+
+
+   <script type="text/javascript" src="app.js"></script>
+</head>
+<body>
+  <div class="jumbotron bg-dark">
+    <div class="container text-center">
+      <h1>Rhetoric</h1>
+      <div class="container">
+        <div class="col-lg-12">
+          <div class="col-lg-4">
+            <i class="fa fa-quote-left fa-3x"></i>
+          <p class="lead">Converts speech to text.</p>
+          </div>
+               <div class="col-lg-4">
+              <i class="fa fa-lightbulb-o fa-3x"></i>
+          <p class="lead">Analyzes text for ideas.</p>
+        </div>
+         <div class="col-lg-4">
+          <img class="icon" src="network.svg"/>
+
+          <p class="lead">Visualizes relationships among ideas in real time.</p>
+        </div>
+      </div>
+      </div>
+      <div class="container">
+        <button onclick="startAnalysis()" class="btn btn-lg btn-primary">Start</button>
+        <button onclick="stopAnalysis()" class="btn btn-lg btn-default">Stop</button>
+        <button onclick="resetAnalysis()" class="btn btn-lg btn-warning">Reset</button>
+      </div>
+    </div>
+    </div>
+  <div class="container">
+    <div class="col-lg-12">
+      <div class="row">
+        <div class="col-lg-6">
+           <h1><i class="fa fa-microphone fa-2x"></i> Live Speech  </h1>
+           <hr align="left">
+           <i class="fa fa-quote-left fa-2x"></i>
+           <p id="interim"></p>
+            <p class="text-right"><i class=" fa fa-quote-right fa-2x"></i></p>
+        </div>
+        <div class="col-lg-6">
+            <div id="transcript">
+             
+              <h1><i class="fa fa-file fa-2x"></i> Transcript </h1>
+               <hr align="left">
+              <p id="final"></p>
+            </div>
+        </div>
+      </div>
+       <div class="row">
+        <div class="col-lg-6">
+            <div id="analysis">
+            <h1><i class="fa fa-gears fa-2x"></i> Analysis </h1>
+            <hr align="left">
+             <h3>Topics<div id="numcategories"></div></h3>
+            <div id="categories"></div>
+            <h3>People<div id="numpeople"></div></h3>
+            <div id="people"></div>
+            <h3>Keywords<div id="numkeywords"></div></h3>
+            <div id="keywords"></div>
+
+              </div>
+      </div>
+        <div class="col-lg-6">
+          <h1>Graph</h1>
+           <hr align="left">
+           <div id="mynetwork"></div>
+        </div>
+       </div>
+    </div>
+   
+
+      
+    </div>
+  </div>
+   
+   
+
+        
+    
+<script type="text/javascript">
+var nodes = [
+        {id: 0, label: "0", group: 'source'},
+        {id: 1, label: "1", group: 'icons'},
+        {id: 2, label: "2", group: 'icons'},
+        {id: 3, label: "3", group: 'icons'},
+        {id: 4, label: "4", group: 'icons'},
+        {id: 5, label: "5", group: 'icons'},
+        {id: 6, label: "6", group: 'icons'},
+        {id: 7, label: "7", group: 'icons'},
+        {id: 8, label: "8", group: 'icons'},
+        {id: 9, label: "9", group: 'icons'},
+        {id: 10, label: "10", group: 'mints'},
+        {id: 11, label: "11", group: 'mints'},
+        {id: 12, label: "12", group: 'mints'},
+        {id: 13, label: "13", group: 'mints'},
+        {id: 14, label: "14", group: 'mints'},
+        {id: 15, group: 'dotsWithLabel'},
+        {id: 16, group: 'dotsWithLabel'},
+        {id: 17, group: 'dotsWithLabel'},
+        {id: 18, group: 'dotsWithLabel'},
+        {id: 19, group: 'dotsWithLabel'},
+        {id: 20, label: "diamonds", group: 'diamonds'},
+        {id: 21, label: "diamonds", group: 'diamonds'},
+        {id: 22, label: "diamonds", group: 'diamonds'},
+        {id: 23, label: "diamonds", group: 'diamonds'},
+    ];
+    var edges = [
+        {from: 1, to: 0},
+        {from: 2, to: 0},
+        {from: 4, to: 3},
+        {from: 5, to: 4},
+        {from: 4, to: 0},
+        {from: 7, to: 6},
+        {from: 8, to: 7},
+        {from: 7, to: 0},
+        {from: 10, to: 9},
+        {from: 11, to: 10},
+        {from: 10, to: 4},
+        {from: 13, to: 12},
+        {from: 14, to: 13},
+        {from: 13, to: 0},
+        {from: 16, to: 15},
+        {from: 17, to: 15},
+        {from: 15, to: 10},
+        {from: 19, to: 18},
+        {from: 20, to: 19},
+        {from: 19, to: 4},
+        {from: 22, to: 21},
+        {from: 23, to: 22},
+        {from: 23, to: 0},
+    ]
+
+    // create a network
+    var container = document.getElementById('mynetwork');
+    var data = {
+        nodes: nodes,
+        edges: edges
+    };
+    var options = {
+        nodes: {
+            shape: 'dot',
+            size: 20,
+            font: {
+                size: 15,
+                color: '#ffffff'
+            },
+            borderWidth: 2
+        },
+        edges: {
+            width: 2
+        },
+        groups: {
+            diamonds: {
+                color: {background:'red',border:'white'},
+                shape: 'diamond'
+            },
+            dotsWithLabel: {
+                label: "I'm a dot!",
+                shape: 'dot',
+                color: 'cyan'
+            },
+            mints: {color:'rgb(0,255,140)'},
+            icons: {
+                shape: 'icon',
+                icon: {
+                    face: 'FontAwesome',
+                    code: '\uf0c0',
+                    size: 50,
+                    color: 'orange'
+                }
+            },
+            source: {
+                color:{border:'white'}
+            }
+        }
+    };
+    var network = new vis.Network(container, data, options);
+</script>
+  </div>
+</body>
+</html>
