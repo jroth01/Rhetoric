@@ -1,5 +1,5 @@
 # Rhetoric
-A hacked up demo / proof of concept for single page web application that 
+A proof of concept for single page web application that 
 analyzes speech and visualizes the speaker’s ideas in real time.
 
 Proposed final project for COMP86 - "Object Oriented 
@@ -8,7 +8,8 @@ Programming for GUI" at Tufts University
 Presented on Wednesday, November 30 2016.
 
 # View the Presentation and Proposal PDFs
-Presentation.pdf & Proposal.pdf Located in this repo
+[View the presentation](/Presentation.pdf)
+[Read the proposal](/Proposal.pdf)
 
 # How it Works
 Upon loading the webpage, the app will begin reading in user audio input, and 
@@ -18,7 +19,7 @@ detection, speech text will be analyzed for keywords, sentiments, concepts,
 phrases, and other ideas. The relationship between ideas will then be displayed 
 in a network visualization graph.
 
-#API & Library Usage
+# API & Library Usage
 ## Speech to text  - Webkit Speech Recognition API
 https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API
 
@@ -53,13 +54,13 @@ make sure they are properly conveying the core ideas of an overarching message
 
 # Running the Demo Locally
 
-Run npm install 
+1. Run npm install 
 
-Type node index.js
+2. Type node index.js
 
-View localhost:5000
+3. View localhost:5000 in Chrome
 
-Allow access to your browser's microphone
+4. Allow access to your browser's microphone
 
 Begin speaking and the app will translate your speech to text. When you take
 a significant pause or finish speaking, the app will perform analysis on
