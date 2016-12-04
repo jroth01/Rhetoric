@@ -1,5 +1,5 @@
 # Rhetoric
-##A single page web application that analyzes speech and visualizes the speaker’s ideas in real time.
+A single page web application that analyzes speech and visualizes the speaker’s ideas in real time.
 
 Proposed final project for COMP86 - "Object Oriented 
 Programming for GUI" at Tufts University
@@ -7,7 +7,6 @@ Programming for GUI" at Tufts University
 Presented on Wednesday, November 30 2016.
 Due December 11, 2016. 
 
-# View the Presentation and Proposal PDFs
 [Presentation](/Presentation.pdf)
 
 [Proposal](/Proposal.pdf)
